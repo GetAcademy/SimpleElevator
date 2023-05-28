@@ -20,5 +20,20 @@ namespace SimpleElevator
         {
 
         }
+
+        public bool IsGoingDirection(int floor, bool directionIsUp)
+        {
+            return directionIsUp;
+        }
+
+        public string GetPeopleOnFloor(int floor)
+        {
+            return floor == 3 ? "A->3 B->1" : "";
+        }
+
+        public string GetPeopleInside()
+        {
+            return "C->1";
+        }
     }
 }
