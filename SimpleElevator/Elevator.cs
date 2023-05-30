@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace SimpleElevator
 {
-    internal class Elevator
+    public class Elevator
     {
         public int CurrentFloor { get; }
         public int NumberOfFloors { get; }
