@@ -2,7 +2,7 @@
 {
     internal class ElevatorConsole
     {
-        private static readonly int _elevatorWidth = 50;
+        private static readonly int _elevatorWidth = 30;
         public static void Write(Elevator elevator)
         {
             var topFloor = elevator.NumberOfFloors;
