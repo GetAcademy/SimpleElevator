@@ -12,7 +12,7 @@ namespace SimpleElevator
 
         public Elevator(int numberOfFloors)
         {
-            CurrentFloor = 1; 
+            CurrentFloor = 1;
             NumberOfFloors = numberOfFloors;
             _people = new List<Person>();
         }
@@ -25,7 +25,15 @@ namespace SimpleElevator
 
         public bool IsGoingDirection(int floor, bool directionIsUp)
         {
-            return directionIsUp;
+            foreach (var person in _people)
+            {
+                if (person.FromFloor == floor)
+                {
+                    if (directionIsUp && person.ToFloor > floor) return true;
+                    if (!directionIsUp && person.ToFloor < floor) return true;
+                }
+            }
+            return false;
         }
 
         public string GetPeopleOnFloor(int floor)
@@ -35,7 +43,11 @@ namespace SimpleElevator
             {
                 if (!person.IsInElevator && floor == person.FromFloor)
                 {
-                    text += person.Description + " ";
+                    if (text != string.Empty)
+                    {
+                        text += " ";
+                    }
+                    text += person.Description;
                 }
             }
             return text;
@@ -52,6 +64,30 @@ namespace SimpleElevator
                 }
             }
             return text;
+        }
+
+        public void Dummy(int a)
+        {
+            if (a < 10)
+            {
+                string s = null;
+                var n = s.Length;
+                Console.WriteLine("x");
+            }
+            else
+            {
+                Console.WriteLine("y");
+            }
+
+            var isEven = a % 2 == 0;
+            if (isEven)
+            {
+                Console.WriteLine("kjfhkj");
+            }
+            else
+            {
+                Console.WriteLine("flhkjk");
+            }
         }
     }
 }
