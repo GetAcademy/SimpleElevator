@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace SimpleElevator
 {
@@ -18,7 +19,8 @@ namespace SimpleElevator
 
         public void Call(char name, int fromFloor, int toFloor)
         {
-
+            var person = new Person(name, fromFloor, toFloor);
+            _people.Add(person);
         }
 
         public bool IsGoingDirection(int floor, bool directionIsUp)
@@ -28,12 +30,28 @@ namespace SimpleElevator
 
         public string GetPeopleOnFloor(int floor)
         {
-            return floor == 3 ? "A->3 B->1" : "";
+            var text = string.Empty;
+            foreach (var person in _people)
+            {
+                if (!person.IsInElevator && floor == person.FromFloor)
+                {
+                    text += person.Description + " ";
+                }
+            }
+            return text;
         }
 
         public string GetPeopleInside()
         {
-            return "C->1";
+            var text = string.Empty;
+            foreach (var person in _people)
+            {
+                if (person.IsInElevator)
+                {
+                    text += person.Description + " ";
+                }
+            }
+            return text;
         }
     }
 }
